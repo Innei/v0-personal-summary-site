@@ -3,8 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* 默认 :root 改为 GitHub Light 风格 */
-:root {
+/* 添加 github-light 和 github-dark class 选择器以配合 next-themes */
+:root,
+.github-light {
   --background: oklch(0.99 0 0);
   --foreground: oklch(0.13 0.02 260);
   --card: oklch(0.98 0 0);
@@ -40,8 +41,9 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* .dark 改为 GitHub Dark 风格 */
-.dark {
+/* .dark 和 .github-dark 共用样式 */
+.dark,
+.github-dark {
   --background: oklch(0.13 0.015 260);
   --foreground: oklch(0.9 0.01 260);
   --card: oklch(0.16 0.015 260);
