@@ -23,20 +23,11 @@ export const metadata: Metadata = {
     title: "年终总结 | Innei's Annual Review",
     description: "记录每一年的成长与思考 - 从 2019 到 2025，在代码与生活中寻找意义",
     siteName: "Innei's Annual Review",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Innei's Annual Review",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "年终总结 | Innei's Annual Review",
     description: "记录每一年的成长与思考 - 从 2019 到 2025，在代码与生活中寻找意义",
-    images: ["/og.jpg"],
   },
   robots: {
     index: true,
