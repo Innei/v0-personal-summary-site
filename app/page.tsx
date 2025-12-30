@@ -8,24 +8,46 @@ import { TypewriterCommand } from "@/components/typewriter-command"
 
 const reviews = [
   {
+    year: 2025,
+    title: "仍在路上，半径之外",
+    summary: "新的一年，继续探索未知的边界。",
+    url: "https://innei.in/notes/205",
+  },
+  {
     year: 2024,
-    title: "拥抱变化，持续成长",
-    summary: "这一年，我学会了在不确定性中寻找确定性，在变化中保持初心。",
+    title: "前路未尽，初心犹在",
+    summary: "回顾过去，展望未来，初心不改。",
+    url: "https://innei.in/notes/184",
   },
   {
     year: 2023,
-    title: "从0到1的突破",
-    summary: "完成了人生中许多重要的第一次，每一次尝试都让我更加相信自己的可能性。",
+    title: "光影交织之年",
+    summary: "明暗交替中，记录生活的点滴光芒。",
+    url: "https://innei.in/notes/160",
   },
   {
     year: 2022,
-    title: "沉淀与思考",
-    summary: "在这个特殊的年份里，我有了更多时间与自己对话，重新审视生活的意义。",
+    title: "在绝望中前行",
+    summary: "即使身处低谷，也要坚持向前。",
+    url: "https://innei.in/notes/136",
   },
   {
     year: 2021,
-    title: "新的起点",
-    summary: "告别学生时代，正式踏入社会。每一步都走得小心翼翼，却也充满期待。",
+    title: "抉择、未知、迷茫、恐惧",
+    summary: "面对人生的十字路口，勇敢做出选择。",
+    url: "https://year.innei.ren/2021/",
+  },
+  {
+    year: 2020,
+    title: "春华秋实",
+    summary: "播种希望，收获成长。",
+    url: "https://year.innei.ren/2020/",
+  },
+  {
+    year: 2019,
+    title: "梦想和远方",
+    summary: "怀揣梦想，踏上追寻远方的旅程。",
+    url: "https://year.innei.ren/2019/",
   },
 ]
 
@@ -67,6 +89,7 @@ export default function HomePage() {
                 year={review.year}
                 title={review.title}
                 summary={review.summary}
+                url={review.url}
                 delay={100}
                 startAnimation={commandDone}
               />

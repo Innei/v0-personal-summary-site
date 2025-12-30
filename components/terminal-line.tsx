@@ -1,19 +1,19 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
 
 interface TerminalLineProps {
   index: number
   year: number
   title: string
   summary: string
+  url?: string
   delay: number
-  startAnimation?: boolean // 新增 prop 控制动画开始
+  startAnimation?: boolean
 }
 
-export function TerminalLine({ index, year, title, summary, delay, startAnimation = true }: TerminalLineProps) {
-  const [phase, setPhase] = useState<"waiting" | "decoding" | "done">("waiting") // 改为 waiting 状态
+export function TerminalLine({ index, year, title, summary, url, delay, startAnimation = true }: TerminalLineProps) {
+  const [phase, setPhase] = useState<"waiting" | "decoding" | "done">("waiting")
   const [displayTitle, setDisplayTitle] = useState(title)
   const [displaySummary, setDisplaySummary] = useState(summary)
   const [isHovered, setIsHovered] = useState(false)
@@ -174,13 +174,18 @@ export function TerminalLine({ index, year, title, summary, delay, startAnimatio
           isHovered ? "bg-primary/5 shadow-[inset_0_0_20px_rgba(var(--primary),0.1)]" : ""
         }`
 
+  const linkHref = url || `/review/${year}`
+  const isExternal = url?.startsWith("http")
+
   if (phase === "waiting") {
     return <div className={wrapperClass}>{content}</div>
   }
 
   return (
-    <Link
-      href={`/review/${year}`}
+    <a
+      href={linkHref}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className={`block ${wrapperClass}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -191,6 +196,6 @@ export function TerminalLine({ index, year, title, summary, delay, startAnimatio
         </div>
       )}
       {content}
-    </Link>
+    </a>
   )
 }
