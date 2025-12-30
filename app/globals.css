@@ -78,7 +78,11 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-/* monokai 主题 - 暖棕背景橙色点缀 */
+/* monokai 主题 - 暖棕背景橙色点缀
+ * next-themes 会把 theme id 作为 class 挂到 html 上（layout.tsx 里配置 themes=[...]).
+ * 这里同时兼容旧的 `.theme-*` 命名，避免历史引用断掉。
+ */
+.monokai,
 .theme-monokai {
   --background: oklch(0.22 0.02 70);
   --foreground: oklch(0.95 0.02 100);
@@ -100,6 +104,7 @@
 }
 
 /* dracula 主题 - 深紫背景粉紫点缀 */
+.dracula,
 .theme-dracula {
   --background: oklch(0.2 0.03 280);
   --foreground: oklch(0.95 0.01 320);
@@ -121,6 +126,7 @@
 }
 
 /* nord 主题 - 冷蓝背景冰蓝点缀 */
+.nord,
 .theme-nord {
   --background: oklch(0.25 0.03 240);
   --foreground: oklch(0.92 0.01 220);
@@ -144,9 +150,9 @@
 /* 删除 solarized 主题，保留其他主题 */
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  /* 字体变量由 next/font 提供 */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

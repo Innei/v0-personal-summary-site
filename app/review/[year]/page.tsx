@@ -1,11 +1,14 @@
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { ThemeSelector } from "@/components/theme-selector"
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { ThemeSelector } from '@/components/theme-selector'
 
-const reviewsData: Record<number, { title: string; content: string; date: string }> = {
+const reviewsData: Record<
+  number,
+  { title: string; content: string; date: string }
+> = {
   2024: {
-    title: "拥抱变化，持续成长",
-    date: "2024-12-31",
+    title: '拥抱变化，持续成长',
+    date: '2024-12-31',
     content: `## 序言
 
 又是一年过去了。
@@ -43,8 +46,8 @@ const growth = challenges.map(c => learn(c));
 > "每一个不曾起舞的日子，都是对生命的辜负。" — 尼采`,
   },
   2023: {
-    title: "从0到1的突破",
-    date: "2023-12-31",
+    title: '从0到1的突破',
+    date: '2023-12-31',
     content: `## 回顾
 
 2023 年，是充满挑战与突破的一年。
@@ -72,8 +75,8 @@ fn main() {
 突破舒适区是痛苦的，但成长从来不会在舒适区里发生。`,
   },
   2022: {
-    title: "沉淀与思考",
-    date: "2022-12-31",
+    title: '沉淀与思考',
+    date: '2022-12-31',
     content: `## 特殊的一年
 
 2022 年，世界依然动荡，但我学会了在混乱中保持内心的平静。
@@ -95,8 +98,8 @@ fn main() {
 外界越是喧嚣，内心越要安静。`,
   },
   2021: {
-    title: "新的起点",
-    date: "2021-12-31",
+    title: '新的起点',
+    date: '2021-12-31',
     content: `## 毕业
 
 告别了学生时代，正式踏入社会。
@@ -121,7 +124,11 @@ $ git commit -m "first commit"
   },
 }
 
-export default async function ReviewPage({ params }: { params: Promise<{ year: string }> }) {
+export default async function ReviewPage({
+  params,
+}: {
+  params: Promise<{ year: string }>
+}) {
   const { year } = await params
   const yearNum = Number.parseInt(year)
   const review = reviewsData[yearNum]
@@ -144,7 +151,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ year: s
           href="/"
           className="font-mono text-xs text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2"
         >
-          <span>{"<-"}</span>
+          <span>{'<-'}</span>
           <span>cd ..</span>
         </Link>
       </header>
@@ -155,7 +162,9 @@ export default async function ReviewPage({ params }: { params: Promise<{ year: s
             <span className="text-primary">$</span>
             <span>cat {year}.md</span>
           </div>
-          <h1 className="text-2xl font-mono font-medium text-foreground mb-2">{review.title}</h1>
+          <h1 className="text-2xl font-mono font-medium text-foreground mb-2">
+            {review.title}
+          </h1>
           <time className="font-mono text-xs text-muted-foreground">
             <span className="text-muted-foreground/50">#</span> {review.date}
           </time>
@@ -175,27 +184,27 @@ export default async function ReviewPage({ params }: { params: Promise<{ year: s
           prose-hr:border-border
         "
         >
-          {review.content.split("\n").map((line, i) => {
-            if (line.startsWith("## ")) {
+          {review.content.split('\n').map((line, i) => {
+            if (line.startsWith('## ')) {
               return <h2 key={i}>{line.slice(3)}</h2>
             }
-            if (line.startsWith("> ")) {
+            if (line.startsWith('> ')) {
               return (
                 <blockquote key={i}>
                   <p>{line.slice(2)}</p>
                 </blockquote>
               )
             }
-            if (line.startsWith("- ")) {
+            if (line.startsWith('- ')) {
               return <li key={i}>{line.slice(2)}</li>
             }
-            if (line.startsWith("```")) {
+            if (line.startsWith('```')) {
               return null
             }
-            if (line.startsWith("---")) {
+            if (line.startsWith('---')) {
               return <hr key={i} />
             }
-            if (line.trim() === "") {
+            if (line.trim() === '') {
               return <br key={i} />
             }
             return <p key={i}>{line}</p>
@@ -208,7 +217,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ year: s
               href={`/review/${prevYear}`}
               className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
             >
-              <span>{"<-"}</span>
+              <span>{'<-'}</span>
               <span>{prevYear}</span>
             </Link>
           ) : (
@@ -221,7 +230,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ year: s
               className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
             >
               <span>{nextYear}</span>
-              <span>{"->"}</span>
+              <span>{'->'}</span>
             </Link>
           ) : (
             <span />
@@ -231,7 +240,8 @@ export default async function ReviewPage({ params }: { params: Promise<{ year: s
 
       <footer className="px-6 py-8 max-w-2xl mx-auto flex items-center justify-between border-t border-border">
         <p className="text-xs text-muted-foreground font-mono">
-          <span className="text-primary">#</span> EOF © {new Date().getFullYear()}
+          <span className="text-primary">#</span> INNEI ©{' '}
+          {new Date().getFullYear()}
         </p>
         <ThemeSelector />
       </footer>
