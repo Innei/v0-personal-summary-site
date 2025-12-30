@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Innei", url: "https://innei.in" }],
   creator: "Innei",
   icons: {
-    icon: "/icon.jpg",
+    icon: "/icon.svg",
   },
   openGraph: {
     type: "website",
