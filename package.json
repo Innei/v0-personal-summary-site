@@ -5,9 +5,9 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "fetch-notes": "bun scripts/fetch-note-data.ts",
     "lint": "eslint .",
-    "start": "next start",
-    "fetch-notes": "bun scripts/fetch-note-data.ts"
+    "start": "next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
